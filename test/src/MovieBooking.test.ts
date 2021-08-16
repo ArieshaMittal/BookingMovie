@@ -32,7 +32,7 @@ describe("Movie Booking Test", () => {
             MORNING : 98,
             AFTERNOON : 100,
             EVENING : 87,
-            NIGHT : 0
+            NIGHT : 100
         }
     };
 
@@ -44,8 +44,16 @@ describe("Movie Booking Test", () => {
         })
     })
 
+    it("should return the recommendation if seat is available in other timing after the given timing", () => {
+        const seatNumber = ticketBooking(currentState, "AFTERNOON", "5-08-20")
+        expect(seatNumber).toEqual({
+            ...currentState,
+            recommendation: "Seats are available on 5-08-20 date and EVENING show"
+        })
+    })
+
     it("should generate error if no seat is available", () => {
-        expect(() => ticketBooking(currentState, "AFTERNOON", "2-08-20")).toThrow("No seats available");
+        expect(() => ticketBooking(currentState, "NIGHT", "5-08-20")).toThrow("No seats available");
     })
 
 })
