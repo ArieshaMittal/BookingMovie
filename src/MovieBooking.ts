@@ -30,6 +30,17 @@ export const ticketBooking = (currentState: seatsStatus ,showType: category, dat
                     }    
                 }
             }
+            else
+            {
+                let curr_day: category;
+                for (curr_day in currentState[curr_key])
+                {
+                    if(currentState[curr_key][curr_day] < maxSeats)
+                    {
+                        return { ...currentState, recommendation: `Seats are available on ${ curr_key } date and ${ curr_day } show` }
+                    }    
+                }
+            }
         }
     }
         

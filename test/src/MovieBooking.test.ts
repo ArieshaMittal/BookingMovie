@@ -1,5 +1,5 @@
 import { ticketBooking } from '../../src/MovieBooking'
-import { seatsBooked,seatsStatus } from '../../src/type'
+import { seatsStatus } from '../../src/type'
 
 describe("Movie Booking Test", () => {
 
@@ -26,7 +26,7 @@ describe("Movie Booking Test", () => {
             MORNING : 18,
             AFTERNOON : 10,
             EVENING : 90,
-            NIGHT : 99
+            NIGHT : 100
         },
         "5-08-20": {
             MORNING : 98,
@@ -36,7 +36,7 @@ describe("Movie Booking Test", () => {
         }
     };
 
-    it("should return the seat number booked as output", () => {
+    it("should return the seat number booked as output if seats are available", () => {
         const seatNumber = ticketBooking(currentState, "MORNING", "1-08-20")
         expect(seatNumber).toEqual({
             ...currentState,
@@ -44,11 +44,19 @@ describe("Movie Booking Test", () => {
         })
     })
 
-    it("should return the recommendation if seat is available in other timing after the given timing", () => {
+    it("should return the recommendation if seat is available in other timing on the same day", () => {
         const seatNumber = ticketBooking(currentState, "AFTERNOON", "5-08-20")
         expect(seatNumber).toEqual({
             ...currentState,
             recommendation: "Seats are available on 5-08-20 date and EVENING show"
+        })
+    })
+
+    it("should return the recommendation if seat is available in other timing on the other day", () => {
+        const seatNumber = ticketBooking(currentState, "NIGHT", "4-08-20")
+        expect(seatNumber).toEqual({
+            ...currentState,
+            recommendation: "Seats are available on 5-08-20 date and MORNING show"
         })
     })
 
