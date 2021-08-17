@@ -17,9 +17,6 @@ jobs:
             - name: Install dependencies
               run: npm install
 
-            - name: Clean
-              run: npm clean
-
             - name: Tests
               run: npm test
 
