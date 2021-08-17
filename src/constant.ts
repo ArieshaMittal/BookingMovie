@@ -14,7 +14,7 @@ export const currentState: seatsStatus = {
             seats: 12, movie: "3 Idiots"
         },
         NIGHT : {
-            seats: 12, movie: "3 Idiots"
+            seats: 12, movie: "Inception"
         }
     },
     "2-08-20": {
@@ -36,7 +36,7 @@ export const currentState: seatsStatus = {
             seats: 12, movie: "3 Idiots"
         },
         AFTERNOON : {
-            seats: 89, movie: "3 Idiots"
+            seats: 89, movie: "Inception"
         },
         EVENING : {
             seats: 12, movie: "3 Idiots"
@@ -56,7 +56,7 @@ export const currentState: seatsStatus = {
             seats: 12, movie: "3 Idiots"
         },
         NIGHT : {
-            seats: 100, movie: "3 Idiots"
+            seats: 100, movie: "Inception"
         }
     },
     "5-08-20": {
@@ -67,10 +67,10 @@ export const currentState: seatsStatus = {
             seats: 100, movie: "3 Idiots"
         },
         EVENING :{
-            seats: 12, movie: "3 Idiots"
+            seats: 80, movie: "Inception"
         },
         NIGHT : {
-            seats: 100, movie: "3 Idiots"
+            seats: 100, movie: "Gravity"
         }
     }
 };

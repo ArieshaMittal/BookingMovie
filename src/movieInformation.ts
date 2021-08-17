@@ -4,6 +4,8 @@ import { day,category, seatsStatus, movieInfo } from './type'
 export const movieInformation = (currentState: seatsStatus ,showType: category, date: day) => {
 
     const { movie } = currentState[date][showType];
+    if(movie == "NULL")
+        throw new Error("No movie available");
     return { ...currentState, movie: movie };
 
 }
@@ -69,4 +71,23 @@ export const assignMovie = (currentState: seatsStatus, showType: category, date:
     }
     throw new Error("Cannot change the movie as seats are already reserved");
 
+}
+
+export const listOfAvailableShows = (currentState: seatsStatus, movieToBeSearched: string) => {
+
+    const listOfShows = [];
+    let curr_date: day;
+    for (curr_date in currentState)
+    {
+        let curr_show: category;
+        for (curr_show in currentState[curr_date])
+        {
+            const { movie,seats } = currentState[curr_date][curr_show];
+            if(seats < maxSeats && movie == movieToBeSearched)
+            {
+                listOfShows.push(`${ maxSeats-seats } seats are available on ${ curr_date } in ${ curr_show } show`);
+            }    
+        }
+    }
+    return listOfShows;
 }
